@@ -68,7 +68,7 @@ class MessagePartStreamDecorator implements StreamInterface
         return $this->stream->getContents();
     }
 
-    public function seek(int $offset, int $whence = SEEK_SET): void
+    public function seek($offset, $whence = self::SEEK_SET)
     {
         $this->stream->seek($offset, $whence);
     }
@@ -100,7 +100,7 @@ class MessagePartStreamDecorator implements StreamInterface
     {    
         return $this->stream->isSeekable();
     }
-    public function getMetadata(?string $key = null): mixed
+    public function getMetadata(?string $key = null)
     {    
         return $this->stream->getMetadata();
     }
