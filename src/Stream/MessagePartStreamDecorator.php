@@ -8,6 +8,7 @@
 namespace ZBateson\MailMimeParser\Stream;
 
 use GuzzleHttp\Psr7\StreamDecoratorTrait;
+use GuzzleHttp\Psr7\Utils;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 use ZBateson\MailMimeParser\Message\IMessagePart;
@@ -33,7 +34,7 @@ class MessagePartStreamDecorator implements StreamInterface
     public function __construct(IMessagePart $part, ?StreamInterface $stream = null)
     {
         $this->part = $part;
-        $this->stream = $stream ?? new NullStream();
+        $this->stream = $stream ?? Utils::streamFor('');
     }
 
     /**
