@@ -107,9 +107,10 @@ $att->saveContent($stream);                     // copies to the stream
 // close only when $message is no longer being used.
 fclose($handle);
 
+```
+
 ## Fixes
 Ensured safer stream handling in MIME parsing via fallback to NullStream.
-```
 
 ## Documentation
 
