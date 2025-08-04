@@ -33,7 +33,7 @@ class MessagePartStreamDecorator implements StreamInterface
     public function __construct(IMessagePart $part, ?StreamInterface $stream = null)
     {
         $this->part = $part;
-        $this->stream = $stream;
+        $this->stream = $stream ?? new NullStream();
     }
 
     /**
@@ -57,5 +57,51 @@ class MessagePartStreamDecorator implements StreamInterface
                 $e
             );
         }
+    }
+    public function getSize(): ?int
+    {
+        return $this->stream->getSize();
+    }
+
+    public function getContents(): string
+    {    
+        return $this->stream->getContents();
+    }
+
+    public function seek(int $offset, int $whence = SEEK_SET): void
+    {
+        $this->stream->seek($offset, $whence);
+    }
+    public function rewind(): void
+    {    
+        $this->stream->rewind();
+    }
+    public function write(string $string): int
+    {    
+        return $this->stream->write($string);
+    }
+    public function eof(): bool
+    {    
+        return $this->stream->eof();
+    }
+    public function tell(): int
+    {    
+        return $this->stream->tell();
+    }
+    public function isReadable(): bool
+    {    
+        return $this->stream->isReadable();
+    }
+    public function isWritable(): bool
+    {    
+        return $this->stream->isWritable();
+    }
+    public function isSeekable(): bool
+    {    
+        return $this->stream->isSeekable();
+    }
+    public function getMetadata(?string $key = null): mixed
+    {    
+        return $this->stream->getMetadata();
     }
 }
