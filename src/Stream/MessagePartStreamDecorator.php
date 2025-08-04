@@ -42,7 +42,7 @@ class MessagePartStreamDecorator implements StreamInterface
      *
      * @throws MessagePartStreamReadException
      */
-    public function read(int $length) : string
+    public function read($length) : string
     {
         try {
             return $this->decoratorRead($length);
@@ -100,7 +100,7 @@ class MessagePartStreamDecorator implements StreamInterface
     {    
         return $this->stream->isSeekable();
     }
-    public function getMetadata(?string $key = null)
+    public function getMetadata($key = null)
     {    
         return $this->stream->getMetadata();
     }
