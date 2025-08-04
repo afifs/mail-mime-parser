@@ -76,7 +76,7 @@ class MessagePartStreamDecorator implements StreamInterface
     {    
         $this->stream->rewind();
     }
-    public function write(string $string): int
+    public function write($string)
     {    
         return $this->stream->write($string);
     }
